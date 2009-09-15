@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :plugin_assets do
+# task :publicious do
 #   # Task goes here
 # end
