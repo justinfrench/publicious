@@ -1,11 +1,10 @@
 PluginAssets
 ============
 
-This plugin is designed to respond to "missing" asset URLs (like /stylesheets/foo.css, /images/foo.png, /javascripts/foo.js) when the web server can't find the file in the public director, and then search through the public directories of any plugins or gems you have installed (based on the order of your view paths), then pass them back to the browser through Rails.
+It's a plugin for plugins.  It allows plugin "engine" developers to supply image, javascript and stylesheet assets in a public directory inside their plugin that "just work" without having to copy those assets over to the app's main public directory with rake tasks or installation scripts, which is stupid.
 
-This allows plugin "engine" developers to supply image, javascript and stylesheet assets for their plugin that "just work" without having to copy those assets over to the app's main public directory, which is stupid.
+In short, it responds to "missing" asset URLs (like /stylesheets/foo.css, /images/foo.png, /javascripts/foo.js) when the web server can't find the file in the public directory, and tries to find a matching file in your plugins and pass that back to the browser through Rails. 
 
-It's a plugin for other plugins.
 
 Example
 -------
