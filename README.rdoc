@@ -1,4 +1,4 @@
-=PluginAssets
+=Publicious
 
 It's a plugin for plugins.  It allows plugin "engine" developers to supply image, javascript and stylesheet assets in a public directory inside their plugin that "just work" without having to copy those assets over to the app's main public directory with rake tasks or installation scripts, which is stupid.
 
@@ -65,4 +65,4 @@ I actually want to see this in Rails core, so help me make it awesome!
 
 ==Etc
 
-PluginAssets is Copyright (c) 2009 Justin French, released under the MIT license.  Your feedback, forking and contributions are greatly welcomed.
+Publicious is Copyright (c) 2009 Justin French, released under the MIT license.  Your feedback, forkings and contributions are greatly welcomed.

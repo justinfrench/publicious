@@ -1,4 +1,4 @@
-class PluginAssetsController < ApplicationController
+class PubliciousController < ApplicationController
   
   def show
     public_paths.each do |public_path|
