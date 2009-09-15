@@ -7,10 +7,7 @@ task :default => :test
 
 desc 'Test the Publicious plugin.'
 Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+  t.pattern = 'test/*_test.rb'
 end
 
 desc 'Generate documentation for the Publicious plugin.'
