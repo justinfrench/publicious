@@ -5,7 +5,7 @@ class NoMatchesTest < ActionController::TestCase
   
   test "when no assets are found" do
     assert_raises ActionView::MissingTemplate do
-      get :show, :path => 'does/not/exist.js'
+      get :show, :path => ['does', 'not', 'exist.css']
     end
   end
 
