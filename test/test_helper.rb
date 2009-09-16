@@ -1,5 +1,7 @@
 require 'test/unit'
 require 'rubygems'
+require 'active_support'
+require 'activesupport'
 require 'action_controller'
 require 'action_controller/test_case'
 require 'action_controller/test_process'
