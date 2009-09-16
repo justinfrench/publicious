@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
-class PubliciousControllerTest < ActionController::TestCase
+class NoMatchesTest < ActionController::TestCase
   tests PubliciousController
   
   test "when no assets are found" do

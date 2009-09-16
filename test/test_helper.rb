@@ -9,7 +9,5 @@ class ApplicationController < ActionController::Base
 end
 
 require File.dirname(__FILE__) + '/../app/controllers/publicious_controller'
+require File.dirname(__FILE__) + '/../config/routes'
 
-ActionController::Routing::Routes.draw do |map|
-  map.connect ':controller/:action/:id'
-end
