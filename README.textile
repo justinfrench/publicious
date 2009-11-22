@@ -56,7 +56,6 @@ h2. There's Still Plenty To Do!
 I wrote this on the train this morning as a proof of concept, so there's a long list:
 
 * It should be a gem plugin, so that other gem plugins can list it as a dependency
-* I haven't written any tests
 * I haven't tackled caching yet (probably need to do both page caching and header response caching)
 
 I actually want to see this in Rails core, so help me make it awesome!
