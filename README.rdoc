@@ -25,12 +25,12 @@ PluginAssets takes these "view paths" and builds the same thing for "public path
 
 Given a request for "/stylesheets/foo/bah.css", the web server would first look for "bah.css" in "RAILS_ROOT/public/foo/bah.css".  If that resource doesn't exist, the request would usually be passed through to Rails, which will try to route the request to a controller action and eventually respond with a 404 (file not found).
 
-Instead, this plugin sets up a controller and appropriate routing to handle the request, searching for the file in your plugins and gem plugins.  In this case, it would search for "bah.css" in the following locations:
+Instead, this plugin intercepts the requests for these missing assets with a piece of middleware, searching through the installed plugins.  In this case, it would search for "bah.css" in the following locations:
 
 * RAILS_ROOT/vendor/plugins/plugin_123/public/stylesheets/foo/bah.css
 * RAILS_ROOT/vendor/plugins/plugin_456/public/stylesheets/foo/bah.css
 
-As soon as a matching file is found, it's passed back to the browser with the correct mime type.  If none of the plugins have such a file, the regular Rails 404 response for a missing template is invoked.
+As soon as a matching file is found, it's passed back to the browser with the correct mime type.  If none of the plugins have such a file, the request is passed onto Rails, which will handle the 404 like it usually does.
 
 It works for plugins and gem plugins. It works for the following URLs:
 
@@ -43,7 +43,7 @@ One day I'll make it configurable for other assets, but in the meantime it's eas
 
 ==Caveats
 
-PluginAssets leverages the view_paths array used by Rails plugins that supply their own views.  Rails plugins and gems are only added to the view_paths array automatically if there's an app/views directory inside the plugin.  If you're supplying public assets, chances are pretty good you're supplying views too, so that probably isn't a big deal.
+Publicious leverages the view_paths array used by Rails plugins that supply their own views.  Rails plugins and gems are only added to the view_paths array automatically if there's an app/views directory inside the plugin.  If you're supplying public assets, chances are pretty good you're supplying views too, so that probably isn't a big deal.
 
 
 ==Isn't it inefficient?
@@ -58,11 +58,10 @@ I wrote this on the train this morning as a proof of concept, so there's a long 
 * It should be a gem plugin, so that other gem plugins can list it as a dependency
 * I haven't written any tests
 * I haven't tackled caching yet (probably need to do both page caching and header response caching)
-* Thinking this could be Rack middleware or Rails Metal rather than a full Rails request stack.
 
 I actually want to see this in Rails core, so help me make it awesome!
 
 
 ==Etc
 
-Publicious is Copyright (c) 2009 Justin French, released under the MIT license.  Your feedback, forkings and contributions are greatly welcomed.
+Publicious is Copyright (c) 2009 Justin French, released under the MIT license.  Your feedback, forkings and contributions are greatly welcomed.  Many thanks to Daniel Neighman (hassox) for his help converting Publicious to Rack middleware rather than a regular Rails routing and controller stack.
