@@ -14,7 +14,7 @@ class SingleMatchTest < Test::Unit::TestCase
     @filecontents   = "hello from stylesheet"
     FileUtils.mkdir(File.dirname(@filename))
     File.open(@filename, 'w') do |file|
-      file << "hello from stylesheet"
+      file << @filecontents
     end
     
     get "/stylesheets/#{@path}"

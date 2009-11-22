@@ -3,6 +3,7 @@ require 'test/unit'
 require "rack/test"
 require "action_controller"
 require File.join(File.dirname(__FILE__), "../app/metal/publicious_metal")
+require File.join(File.dirname(__FILE__), "../rails/init")
 
 RAILS_ROOT = "/tmp"
 

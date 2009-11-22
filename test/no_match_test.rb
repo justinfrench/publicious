@@ -4,7 +4,7 @@ class NoMatchTest < Test::Unit::TestCase
   
   include TestHelper
   
-  def test_redirect_logged_in_users_to_dashboard
+  def test_responds_with_not_found
     get "/stylesheets/not_here.css"
     assert last_response.not_found?
   end
