@@ -41,6 +41,22 @@ It works for plugins and gem plugins. It works for the following URLs:
 One day I'll make it configurable for other assets, but in the meantime it's easy to hack/fork.
 
 
+h2. Installation
+
+The gem is hosted on gemcutter, so *if you haven't already*, add it as a gem source:
+
+<pre>
+  sudo gem sources -a http://gemcutter.org/
+</pre>
+
+Then install the Publicious gem:
+
+<pre>
+  sudo gem install publicious
+</pre>
+
+
+
 h2. Caveats
 
 Publicious leverages the view_paths array used by Rails plugins that supply their own views.  Rails plugins and gems are only added to the view_paths array automatically if there's an app/views directory inside the plugin.  If you're supplying public assets, chances are pretty good you're supplying views too, so that probably isn't a big deal.
