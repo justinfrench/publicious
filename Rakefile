@@ -23,7 +23,7 @@ end
 desc 'Generate documentation for the Publicious plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Passive'
+  rdoc.title    = 'Publicious'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README.textile')
   rdoc.rdoc_files.include('MIT-LICENSE')
