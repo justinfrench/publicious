@@ -1,9 +1,9 @@
 require 'rubygems'
 require 'test/unit'
 require "rack/test"
+require "rails"
 require "action_controller"
-require File.join(File.dirname(__FILE__), "../app/metal/publicious_metal")
-require File.join(File.dirname(__FILE__), "../rails/init")
+require "publicious"
 
 RAILS_ROOT = "/tmp"
 
@@ -11,7 +11,7 @@ module TestHelper
   include Rack::Test::Methods
   
   def app
-    PubliciousMetal
+    Publicious::Responder
   end
   
   def setup_vendor_dir
@@ -49,8 +49,16 @@ module TestHelper
     plugin_names.each do |plugin_name|
       plugin_name = plugin_name.to_s
       
-      ActionController::Base.view_paths << File.join(@vendor_dir, plugin_name, 'app', 'views')
-  
+      class_eval "
+      module ::#{plugin_name.classify}
+        class Engine < ::Rails::Engine
+          #engine_name :#{plugin_name}
+          paths.public = '#{@vendor_dir}/#{plugin_name}/public'
+        end
+      end"
+      
+      #ActionController::Base.view_paths << File.join(@vendor_dir, plugin_name, 'app', 'views')
+      
       FileUtils.mkdir(File.join(@vendor_dir, plugin_name))
       FileUtils.mkdir(File.join(@vendor_dir, plugin_name, 'public'))
       FileUtils.mkdir(File.join(@vendor_dir, plugin_name, 'public', 'stylesheets'))

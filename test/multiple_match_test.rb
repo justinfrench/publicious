@@ -33,19 +33,7 @@ class MultipleMatchesTest < Test::Unit::TestCase
   def test_should_respond_with_success
     assert last_response.ok?
   end
-  
-  def test_view_paths_should_contain_three_items
-    assert_equal 4, ActionController::Base.view_paths.size
-  end
-  
-  def test_public_paths_should_contain_two_items
-    assert_equal 3, app.public_paths.size # one less that view_paths
-  end
-
-  def test_public_paths_should_contain_the_plugins_public_dir
-    assert_equal "/tmp/vendor/my_plugin/public", app.public_paths.second
-  end
-  
+    
   def test_should_respond_with_first_file_contents
     assert_equal File.read(@filename_1), last_response.body
     assert_equal @filecontents_1, last_response.body
