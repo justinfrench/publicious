@@ -4,7 +4,6 @@ Mime::Type.register "image/png", :png
 
 module Publicious
   class Engine < Rails::Engine
-    engine_name :publicious
   end
 end
 
