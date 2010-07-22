@@ -1,6 +1,7 @@
-Mime::Type.register "image/jpeg", :jpg
-Mime::Type.register "image/gif", :gif
-Mime::Type.register "image/png", :png
+if defined?(Rails)
+  require 'publicious/railtie'
+  require 'publicious/mime_types'
+end
 
 class Publicious
   FILE_METHODS = %w(GET HEAD).freeze
