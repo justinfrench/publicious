@@ -5,6 +5,8 @@ require "rails"
 require "action_controller"
 require "publicious"
 
+Publicious.logger.level = Logger::ERROR # Silence INFO logs from the middleware during tests
+
 RAILS_ROOT = "/tmp"
 
 NOT_FOUND_APP = lambda{|e| Rack::Response.new("NOT FOUND", 404).finish}

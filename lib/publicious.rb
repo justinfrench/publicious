@@ -3,8 +3,14 @@ if defined?(Rails)
   require 'publicious/mime_types'
 end
 
+require 'logger'
+
 class Publicious
   FILE_METHODS = %w(GET HEAD).freeze
+  
+  @@logger = Logger.new($stdout)
+  @@logger.level = Logger::DEBUG
+  cattr_accessor :logger
 
   def initialize(app)
     @app = app
@@ -16,6 +22,7 @@ class Publicious
   end
 
   def call(env)
+    
     request = Rack::Request.new(env)
     return @app.call(env) unless FILE_METHODS.include?(request.request_method)
 
@@ -33,7 +40,8 @@ class Publicious
 
       # Make sure pricks aren't ../../config/database.yml ing us
       respond_not_found! unless file_name.gsub(%r[^#{path}], "") == request.path_info
-
+      
+      klass.logger.info "Publicious middleware served #{request.path_info} with #{file_name}"
       Rack::Response.new(
         File.open(file_name),
         200,'Content-Type' => content_type_for_file(file_name)
