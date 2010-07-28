@@ -5,7 +5,7 @@ end
 
 require 'logger'
 require 'rubygems'
-require 'active_support/core_ext/class'
+require 'active_support/all'
 
 class Publicious
   FILE_METHODS = %w(GET HEAD).freeze
