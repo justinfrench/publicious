@@ -1,3 +1,8 @@
+h1. PLEASE NOTE
+
+*Rails 3.1 introduces an Asset Pipeline that solves exactly this problem in a much better way. I won't be working on this library any further, and it will eventually be removed from GitHub.*
+
+
 h1. Publicious
 
 It's a plugin for plugins.  It allows plugin engine[http://guides.rubyonrails.org/2_3_release_notes.html] developers to supply image, javascript and stylesheet assets in a public directory inside their plugin that "just work" without having to copy those assets over to the app's main public directory with rake tasks or installation scripts, which is stupid.
